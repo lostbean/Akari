@@ -1,5 +1,4 @@
-{ icons, ... }:
-{
+{icons, ...}: {
   plugins.neo-tree = {
     enable = true;
     closeIfLastWindow = true;
@@ -35,6 +34,9 @@
 
     window.mappings = {
       "<space>" = "none";
+      "l" = "open";
+      "h" = "close_node";
+      "P".__raw = ''{ "toggle_preview", config = { use_float = true } }'';
     };
   };
 
