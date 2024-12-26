@@ -36,6 +36,7 @@
     ./lang/shell.nix
     ./lang/typescript.nix
     ./lang/yaml.nix
+    ./lang/gleam.nix
 
     ./treesitter/treesitter.nix
     ./treesitter/treesitter-textobjects.nix
