@@ -9,6 +9,7 @@
 
     ./editor/neotree.nix
     ./editor/undotree.nix
+    ./editor/multicursor.nix
     ./editor/whichkey.nix
     ./editor/yazi.nix
 
