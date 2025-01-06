@@ -19,6 +19,7 @@
 
   outputs =
     {
+      self,
       nixvim,
       flake-utils,
       nixpkgs,
@@ -32,7 +33,9 @@
           inherit system;
           config.allowUnfree = true;
         };
+
         nixvim' = nixvim.legacyPackages.${system};
+
         nixvimModule = {
           inherit pkgs;
           module = import ./config; # import the module directly
@@ -51,6 +54,12 @@
 
         # Lets you run `nix run` to start nixvim
         packages.default = nvim;
+
       }
-    );
+    )
+    // {
+      overlays.default = final: prev: {
+        akari = self.packages.${prev.stdenv.hostPlatform.system}.default;
+      };
+    };
 }

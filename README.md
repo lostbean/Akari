@@ -63,6 +63,25 @@ If you'd like to give it a try before installing: `nix run github:lostbean/Akari
 }
 ```
 
+Or using the provided overlay.
+
+```nix
+{
+  nixpkgs.overlays = [
+      inputs.Akari.overlays.default;
+  ];
+}
+
+# and adding the akira package to to the system.
+
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+   akari
+  ];
+}
+```
+
 4: Rebuild your system.
 
 </details>
