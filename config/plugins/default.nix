@@ -1,6 +1,7 @@
 {
   imports = [
-    ./ai/codeium.nix
+    ./ai/avante.nix
+    ./ai/copilot.nix
 
     ./completion/cmp.nix
     ./completion/lspkind.nix
