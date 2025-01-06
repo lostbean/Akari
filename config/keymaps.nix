@@ -1,7 +1,19 @@
+let
+  mapKey = mode: key: action: extraOptions: {
+    inherit mode key action;
+    options = extraOptions;
+  };
+in
 {
   globals.mapleader = " ";
 
   keymaps = [
+    # Buffer
+    (mapKey "n" "<C-j>" "<cmd>bprevious<cr>" { desc = "Prev Buffer"; })
+    (mapKey "n" "<C-k>" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
+    (mapKey "n" "[b" "<cmd>bprevious<cr>" { desc = "Prev Buffer"; })
+    (mapKey "n" "]b" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
+
     # Windows
     {
       mode = "n";
