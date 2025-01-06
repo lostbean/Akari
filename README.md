@@ -10,7 +10,7 @@ Akari
   <div align="center">
    <p></p>
    <a href="https://github.com/sioodmy/dotfiles/">
-      <img src="https://img.shields.io/github/repo-size/spector700/Akari?color=ea999c&labelColor=303446&style=for-the-badge">
+      <img src="https://img.shields.io/github/repo-size/lostbean/Akari?color=ea999c&labelColor=303446&style=for-the-badge">
    </a>
       <a = href="https://nixos.org">
       <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=303446&logo=NixOS&logoColor=white&color=91D7E3">
@@ -25,7 +25,6 @@ Akari
 <br>
 </div>
 
-![neovim-pic-1](./.github/assets/neovim-pic-1.png)
 ![neovim-pic-2](./.github/assets/neovim-pic-2.png)
 ![neovim-pic-3](./.github/assets/neovim-pic-3.png)
 <p align="center"> Screenshots Circa: 2024-4-9</p>
@@ -34,11 +33,11 @@ Akari
 
 # 🔨 Installation
 
-If you'd like to give it a try before installing: `nix run github:spector700/Akari`
+If you'd like to give it a try before installing: `nix run github:lostbean/Akari`
 
 ### Adding it as a flake
 
-1: Go to the flake.nix and add `Akari.url = "github:spector700/Akari"` to your inputs.
+1: Go to the flake.nix and add `Akari.url = "github:lostbean/Akari"` to your inputs.
 
 ```nix
 # flake
@@ -46,7 +45,7 @@ If you'd like to give it a try before installing: `nix run github:spector700/Aka
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    Akari.url = "github:spector700/Akari";
+    Akari.url = "github:lostbean/Akari";
   };
 }
 ```
@@ -85,5 +84,6 @@ nix run .
 # :bookmark_tabs: Resources
 Some sick ass Nixvim setups that I use from.
 
+- [spector700/Akari - original work](https://github.com/spector700/Akari)
 - [khaneliman/khanelivim](https://github.com/khaneliman/khanelivim/tree/main)
 - [niksingh710/nvix](https://github.com/niksingh710/nvix)
