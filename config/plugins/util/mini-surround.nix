@@ -17,5 +17,17 @@
         };
       };
     };
+
+    which-key.settings.spec = [
+      {
+        __unkeyed = "gs";
+        mode = [
+          "n"
+          "v"
+        ];
+        group = "+surround";
+        icon = "⸨ ";
+      }
+    ];
   };
 }

@@ -13,6 +13,35 @@ in
     (mapKey "n" "<C-k>" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
     (mapKey "n" "[b" "<cmd>bprevious<cr>" { desc = "Prev Buffer"; })
     (mapKey "n" "]b" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
+    (mapKey "n" "<leader>bb" "<cmd>e #<cr>" { desc = "Switch to Other Buffer"; })
+
+    # Diagnostic
+    (mapKey "n" "]e" ":lua GotoNextError()<cr>" {
+      desc = "Next Error";
+      silent = true;
+    })
+    (mapKey "n" "[e" ":lua GotoPrevError()<cr>" {
+      desc = "Prev Error";
+      silent = true;
+    })
+    (mapKey "n" "]w" ":lua GotoNextWarn()<cr>" {
+      desc = "Next Warning";
+      silent = true;
+    })
+    (mapKey "n" "[w" ":lua GotoPrevWarn()<cr>" {
+      desc = "Prev Warning";
+      silent = true;
+    })
+
+    # Navigation
+    (mapKey "n" "]h" ":lua NextHunk()<cr>" {
+      desc = "Next Hunk";
+      silent = true;
+    })
+    (mapKey "n" "[h" ":lua PrevHunk()<cr>" {
+      desc = "Prev Hunk";
+      silent = true;
+    })
 
     # Windows
     {
@@ -253,7 +282,48 @@ in
       options.desc = "Delete to void register";
     }
   ];
+
   extraConfigLua = ''
+    function GotoNextError ()
+      local go = vim.diagnostic.goto_next
+      severity = vim.diagnostic.severity["ERROR"] or nil
+      go({ severity = severity })
+    end
+
+    function GotoPrevError ()
+      local go = vim.diagnostic.goto_prev
+      severity = vim.diagnostic.severity["ERROR"] or nil
+      go({ severity = severity })
+    end
+
+    function GotoNextWarn ()
+      local go = vim.diagnostic.goto_next
+      severity = vim.diagnostic.severity["WARN"] or nil
+      go({ severity = severity })
+    end
+
+    function GotoPrevWarn ()
+      local go = vim.diagnostic.goto_prev
+      severity = vim.diagnostic.severity["WARN"] or nil
+      go({ severity = severity })
+    end
+
+    function NextHunk()
+      if vim.wo.diff then
+        vim.cmd.normal({ "]c", bang = true })
+      else
+        package.loaded.gitsigns.nav_hunk("next")
+      end
+    end
+
+    function PrevHunk()
+      if vim.wo.diff then
+        vim.cmd.normal({ "[c", bang = true })
+      else
+        package.loaded.gitsigns.nav_hunk("prev")
+      end
+    end
+
     function ToggleLineNumber()
     if vim.wo.number then
       vim.wo.number = false
@@ -276,7 +346,7 @@ in
         vim.wo.wrap = not vim.wo.wrap
     end
 
-     if vim.lsp.inlay_hint then
+    if vim.lsp.inlay_hint then
        vim.keymap.set('n', '<leader>uh', function()
          vim.lsp.inlay_hint(0, nil)
        end, { desc = 'Toggle Inlay Hints' })
