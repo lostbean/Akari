@@ -2,11 +2,14 @@
   plugins.which-key = {
     enable = true;
     settings = {
+      delay = 600;
+
       icons = {
         breadcrumb = "»";
         group = "+";
         separator = ""; # ➜
       };
+
       win = {
         border = "rounded";
         padding = [
@@ -14,6 +17,7 @@
           1
         ];
       };
+
       spec = [
         # General Mappings
         {
