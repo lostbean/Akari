@@ -15,24 +15,6 @@ in
     (mapKey "n" "]b" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
     (mapKey "n" "<leader>bb" "<cmd>e #<cr>" { desc = "Switch to Other Buffer"; })
 
-    # Diagnostic
-    (mapKey "n" "]e" ":lua GotoNextError()<cr>" {
-      desc = "Next Error";
-      silent = true;
-    })
-    (mapKey "n" "[e" ":lua GotoPrevError()<cr>" {
-      desc = "Prev Error";
-      silent = true;
-    })
-    (mapKey "n" "]w" ":lua GotoNextWarn()<cr>" {
-      desc = "Next Warning";
-      silent = true;
-    })
-    (mapKey "n" "[w" ":lua GotoPrevWarn()<cr>" {
-      desc = "Prev Warning";
-      silent = true;
-    })
-
     # Navigation
     (mapKey "n" "]h" ":lua NextHunk()<cr>" {
       desc = "Next Hunk";
@@ -284,30 +266,6 @@ in
   ];
 
   extraConfigLua = ''
-    function GotoNextError ()
-      local go = vim.diagnostic.goto_next
-      severity = vim.diagnostic.severity["ERROR"] or nil
-      go({ severity = severity })
-    end
-
-    function GotoPrevError ()
-      local go = vim.diagnostic.goto_prev
-      severity = vim.diagnostic.severity["ERROR"] or nil
-      go({ severity = severity })
-    end
-
-    function GotoNextWarn ()
-      local go = vim.diagnostic.goto_next
-      severity = vim.diagnostic.severity["WARN"] or nil
-      go({ severity = severity })
-    end
-
-    function GotoPrevWarn ()
-      local go = vim.diagnostic.goto_prev
-      severity = vim.diagnostic.severity["WARN"] or nil
-      go({ severity = severity })
-    end
-
     function NextHunk()
       if vim.wo.diff then
         vim.cmd.normal({ "]c", bang = true })

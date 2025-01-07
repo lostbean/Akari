@@ -5,12 +5,22 @@
     lsp = {
       enable = true;
       servers.typos_lsp.enable = true;
-      keymaps.lspBuf = {
-        "<S-k>" = "signature_help";
-        "gi" = "implementation";
+      keymaps = {
+
+        lspBuf = {
+          "gh" = "signature_help";
+        };
       };
     };
+
     lint.enable = true;
+
+    which-key.settings.spec = [
+      {
+        __unkeyed = "gh";
+        desc = "Signature Help";
+      }
+    ];
   };
 
   keymaps = [

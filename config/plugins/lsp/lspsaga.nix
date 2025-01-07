@@ -13,6 +13,12 @@
         showFile = false;
       };
 
+      finder = {
+        methods = {
+          "tyd" = "textDocument/typeDefinition";
+        };
+      };
+
       codeAction = {
         showServerName = true;
         numShortcut = false;
@@ -84,6 +90,7 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
       key = "<leader>lo";
@@ -93,6 +100,7 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
       key = "<leader>lr";
@@ -102,6 +110,7 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
       key = "<leader>ca";
@@ -111,15 +120,27 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
-      key = "<leader>cd";
+      key = "<leader>cb";
       action = "<cmd>Lspsaga show_buf_diagnostics<CR>";
       options = {
-        desc = "Line Diagnostics";
+        desc = "Buffer Diagnostics";
         silent = true;
       };
     }
+
+    {
+      mode = "n";
+      key = "<leader>cw";
+      action = "<cmd>Lspsaga show_workspace_diagnostics<CR>";
+      options = {
+        desc = "Workspace Diagnostics";
+        silent = true;
+      };
+    }
+
     {
       mode = "n";
       key = "gd";
@@ -129,6 +150,7 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
       key = "gt";
@@ -138,6 +160,17 @@
         silent = true;
       };
     }
+
+    {
+      mode = "n";
+      key = "gr";
+      action = "<cmd>Lspsaga finder<CR>";
+      options = {
+        desc = "References";
+        silent = true;
+      };
+    }
+
     {
       mode = "n";
       key = "gpd";
@@ -147,6 +180,7 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
       key = "gpt";
@@ -156,6 +190,7 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
       key = "gl";
@@ -165,21 +200,79 @@
         silent = true;
       };
     }
+
     {
       mode = "n";
-      key = "[d";
+      key = "]d";
       action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
       options = {
         desc = "Next Diagnostic";
         silent = true;
       };
     }
+
     {
       mode = "n";
-      key = "]d";
+      key = "[d";
       action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
       options = {
         desc = "Previous Diagnostic";
+        silent = true;
+      };
+    }
+
+    {
+      mode = "n";
+      key = "]e";
+      action.__raw = ''
+        function()
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+        end
+      '';
+      options = {
+        desc = "Next Error";
+        silent = true;
+      };
+    }
+
+    {
+      mode = "n";
+      key = "[e";
+      action.__raw = ''
+        function()
+          require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+        end
+      '';
+      options = {
+        desc = "Previous Error";
+        silent = true;
+      };
+    }
+
+    {
+      mode = "n";
+      key = "]w";
+      action.__raw = ''
+        function()
+          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+        end
+      '';
+      options = {
+        desc = "Next Warning";
+        silent = true;
+      };
+    }
+
+    {
+      mode = "n";
+      key = "[w";
+      action.__raw = ''
+        function()
+          require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
+        end
+      '';
+      options = {
+        desc = "Previous Warning";
         silent = true;
       };
     }
