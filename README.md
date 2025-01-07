@@ -33,7 +33,11 @@ Akari
 
 # 🔨 Installation
 
-If you'd like to give it a try before installing: `nix run github:lostbean/Akari`
+If you'd like to give it a try before installing:
+
+```sh
+nix run github:lostbean/Akari
+```
 
 ### Adding it as a flake
 
