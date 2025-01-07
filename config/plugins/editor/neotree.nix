@@ -5,6 +5,8 @@
 
     closeIfLastWindow = true;
 
+    autoCleanAfterSessionRestore = true;
+
     sources = [
       "filesystem"
       "buffers"
