@@ -98,5 +98,45 @@
         desc = "Undo Stage Hunk";
       };
     }
+
+    # Navigation
+    {
+      mode = "n";
+      key = "]h";
+      action = ":lua NextHunk()<cr>";
+      options = {
+        silent = true;
+        desc = "Next hunk";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "[h";
+      action = ":lua PrevHunk()<cr>";
+      options = {
+        silent = true;
+        desc = "Prev hunk";
+      };
+    }
+
   ];
+
+  extraConfigLua = ''
+    function NextHunk()
+      if vim.wo.diff then
+        vim.cmd.normal({ "]h", bang = true })
+      else
+        package.loaded.gitsigns.nav_hunk("next", { target = "all", preview = true })
+      end
+    end
+
+    function PrevHunk()
+      if vim.wo.diff then
+        vim.cmd.normal({ "[h", bang = true })
+      else
+        package.loaded.gitsigns.nav_hunk("prev", { target = "all", preview = true })
+      end
+    end
+  '';
 }

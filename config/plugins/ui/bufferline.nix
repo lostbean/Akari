@@ -99,7 +99,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<C-Tab>";
+      key = "<C-k>";
       action = "<cmd>BufferLineCycleNext<cr>";
       options = {
         desc = "Cycle to next buffer";
@@ -108,7 +108,25 @@
 
     {
       mode = "n";
-      key = "<C-S-Tab>";
+      key = "<C-j>";
+      action = "<cmd>BufferLineCyclePrev<cr>";
+      options = {
+        desc = "Cycle to previous buffer";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "]b";
+      action = "<cmd>BufferLineCycleNext<cr>";
+      options = {
+        desc = "Cycle to next buffer";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "[b";
       action = "<cmd>BufferLineCyclePrev<cr>";
       options = {
         desc = "Cycle to previous buffer";
@@ -130,6 +148,15 @@
       action = "<cmd>BufferLineCloseRight<cr>";
       options = {
         desc = "Delete buffers to the right";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>bb";
+      action = "<cmd>e #<cr>";
+      options = {
+        desc = "Switch to previous buffer";
       };
     }
 

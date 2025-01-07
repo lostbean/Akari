@@ -1,32 +1,14 @@
-let
-  mapKey = mode: key: action: extraOptions: {
-    inherit mode key action;
-    options = extraOptions;
-  };
-in
 {
   globals.mapleader = " ";
 
   keymaps = [
-    # Buffer
-    (mapKey "n" "<C-j>" "<cmd>bprevious<cr>" { desc = "Prev Buffer"; })
-    (mapKey "n" "<C-k>" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
-    (mapKey "n" "[b" "<cmd>bprevious<cr>" { desc = "Prev Buffer"; })
-    (mapKey "n" "]b" "<cmd>bnext<cr>" { desc = "Next Buffer"; })
-    (mapKey "n" "<leader>bb" "<cmd>e #<cr>" { desc = "Switch to Other Buffer"; })
-
-    # Navigation
-    (mapKey "n" "]h" ":lua NextHunk()<cr>" {
-      desc = "Next Hunk";
-      silent = true;
-    })
-    (mapKey "n" "[h" ":lua PrevHunk()<cr>" {
-      desc = "Prev Hunk";
-      silent = true;
-    })
-
     # Terminal
-    (mapKey "t" "<C-n>" "<C-\\><C-n>" { desc = "Normal mode in Terminal"; })
+    {
+      mode = "t";
+      key = "<C-n>";
+      action = "<C-\\><C-n>";
+      options.desc = "Normal mode in Terminal";
+    }
 
     # Windows
     {
@@ -269,22 +251,6 @@ in
   ];
 
   extraConfigLua = ''
-    function NextHunk()
-      if vim.wo.diff then
-        vim.cmd.normal({ "]c", bang = true })
-      else
-        package.loaded.gitsigns.nav_hunk("next")
-      end
-    end
-
-    function PrevHunk()
-      if vim.wo.diff then
-        vim.cmd.normal({ "[c", bang = true })
-      else
-        package.loaded.gitsigns.nav_hunk("prev")
-      end
-    end
-
     function ToggleLineNumber()
     if vim.wo.number then
       vim.wo.number = false
