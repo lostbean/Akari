@@ -68,5 +68,25 @@
         desc = "Explorer NeoTree (root dir)";
       };
     }
+
+    {
+      mode = "n";
+      key = "<leader>ge";
+      action = "<cmd>Neotree source=git_status action=focus reveal toggle<cr>";
+      options = {
+        silent = true;
+        desc = "Explorer NeoTree (git modified)";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>be";
+      action = "<cmd>Neotree source=buffers action=focus reveal toggle<cr>";
+      options = {
+        silent = true;
+        desc = "Explorer NeoTree (open buffers)";
+      };
+    }
   ];
 }
