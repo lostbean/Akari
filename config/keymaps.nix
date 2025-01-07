@@ -25,6 +25,9 @@ in
       silent = true;
     })
 
+    # Terminal
+    (mapKey "t" "<C-n>" "<C-\\><C-n>" { desc = "Normal mode in Terminal"; })
+
     # Windows
     {
       mode = "n";
