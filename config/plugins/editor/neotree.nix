@@ -34,6 +34,15 @@
       };
     };
 
+    eventHandlers = {
+      # Close neotree after opening a file
+      "file_open_requested" = ''
+        function()
+          require("neo-tree.command").execute({ action = "close" })
+        end
+      '';
+    };
+
     defaultComponentConfigs = {
       gitStatus = {
         symbols = {
