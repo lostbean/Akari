@@ -9,6 +9,7 @@
     ./debug/dap.nix
 
     ./editor/neotree.nix
+    ./editor/spider.nix
     ./editor/undotree.nix
     ./editor/multicursor.nix
     ./editor/whichkey.nix
