@@ -4,15 +4,15 @@
   plugins = {
     conform-nvim.settings = {
       formatters_by_ft = {
-        javascript = [ "eslint_d" ];
-        javascriptreact = [ "eslint_d" ];
-        typescript = [ "eslint_d" ];
-        typescriptreact = [ "eslint_d" ];
-        svelte = [ "eslint_d" ];
+        javascript = [ "prettierd" ];
+        javascriptreact = [ "prettierd" ];
+        typescript = [ "prettierd" ];
+        typescriptreact = [ "prettierd" ];
+        svelte = [ "prettierd" ];
       };
 
-      formatters.eslint_d = {
-        command = "${pkgs.eslint_d}/bin/eslint_d";
+      formatters.prettierd = {
+        command = "${pkgs.prettierd}/bin/prettierd";
       };
     };
 
