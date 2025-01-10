@@ -79,9 +79,13 @@
           action = "find_files hidden=true";
           options.desc = "Find project files";
         };
+        "<leader>fg" = {
+          action = "git_files";
+          options.desc = "Git Files";
+        };
         "<leader>/" = {
           action = "live_grep";
-          options.desc = "Grep (root dir)";
+          options.desc = "Grep (project root)";
         };
         "<leader>:" = {
           action = "command_history";
@@ -139,7 +143,33 @@
           action = "colorscheme";
           options.desc = "Colorscheme preview";
         };
+        "<leader>fu" = {
+          mode = "n";
+          action = "undo";
+          options.desc = "List undo history";
+        };
       };
     };
   };
+
+  keymaps = [
+    {
+      key = "<leader>sg";
+      action.__raw = ''
+        function()
+          local opts = {}
+          local git_dir = vim.fn.system(string.format("${pkgs.git}/bin/git -C %s rev-parse --show-toplevel 2>/dev/null", vim.fn.expand("%:p:h")))
+          if vim.v.shell_error == 0 then
+            git_dir = string.gsub(git_dir, "\n", "") -- remove newline character
+            opts = {
+              cwd = git_dir,
+              prompt_title = "Live Grep (Git Root)"
+            }
+          end
+          require('telescope.builtin').live_grep(opts)
+        end
+      '';
+      options.desc = "Grep (Git root)";
+    }
+  ];
 }
