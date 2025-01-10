@@ -1,6 +1,9 @@
 {
   plugins = {
     spider = {
+      extraOptions = {
+        subwordMovement = false;
+      };
       enable = true;
       keymaps = {
         motions = {
