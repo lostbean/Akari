@@ -5,9 +5,9 @@
     (mkPkgs "minty" inputs.minty)
   ];
 
-  plugins.nvim-colorizer = {
+  plugins.colorizer = {
     enable = true;
-    userDefaultOptions = {
+    settings.user_default_options = {
       css = true;
       mode = "virtualtext";
       tailwind = true;

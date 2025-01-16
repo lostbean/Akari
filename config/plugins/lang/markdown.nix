@@ -41,10 +41,20 @@
       };
     };
 
-    lint = {
-      lintersByFt.md = [ "markdownlint-cli2" ];
-      linters.markdownlint-cli2.cmd = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
-    };
+    # TODO: Somehow setiing this linter breaks the init.lua with:
+    # E5113: Error while calling lua chunk: /nix/store/45qcp4lqkwlqmmc4ivpip1kir0bnfym4-init.lua:797: attempt to index a nil value
+    #
+    # lint = {
+    #   lintersByFt = {
+    #     md = [ "mdcli" ];
+    #   };
+    #
+    #   linters = {
+    #     mdcli = {
+    #       cmd = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
+    #     };
+    #   };
+    # };
   };
 
   keymaps = [

@@ -47,29 +47,34 @@
 
     clangd-extensions = {
       enable = true;
-      extraOptions = {
+      settings = {
+
         inlay_hints = {
           inline = false;
         };
-        codelens.enable = true;
-      };
-      ast = {
-        roleIcons = {
-          type = "";
-          declaration = "";
-          expression = "";
-          specifier = "";
-          statement = "";
-          templateArgument = "";
+
+        extraConfig = {
+          codelens.enable = true;
         };
-        kindIcons = {
-          compound = "";
-          recovery = "";
-          translationUnit = "";
-          packExpansion = "";
-          templateTypeParm = "";
-          templateTemplateParm = "";
-          templateParamObject = "";
+
+        ast = {
+          role_icons = {
+            type = "";
+            declaration = "";
+            expression = "";
+            specifier = "";
+            statement = "";
+            templateArgument = "";
+          };
+          kind_icons = {
+            compound = "";
+            recovery = "";
+            translationUnit = "";
+            packExpansion = "";
+            templateTypeParm = "";
+            templateTemplateParm = "";
+            templateParamObject = "";
+          };
         };
       };
     };

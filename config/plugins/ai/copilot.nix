@@ -3,12 +3,14 @@
     copilot-chat.enable = true;
     copilot-lua = {
       enable = true;
-      suggestion = {
-        enabled = false;
-        autoTrigger = true;
-        keymap.accept = "<C-CR>";
+      settings = {
+        suggestion = {
+          enabled = false;
+          autoTrigger = true;
+          keymap.accept = "<C-CR>";
+        };
+        panel.enabled = false;
       };
-      panel.enabled = false;
     };
 
     which-key.settings.spec = [
