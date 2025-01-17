@@ -81,7 +81,7 @@
     {
       mode = "n";
       key = "<leader>ge";
-      action = "<cmd>Neotree source=git_status action=focus reveal toggle<cr>";
+      action = "<cmd>Neotree float source=git_status action=focus reveal toggle<cr>";
       options = {
         silent = true;
         desc = "Explorer NeoTree (git modified)";
