@@ -26,7 +26,7 @@
   keymaps = [
     {
       action = "<cmd>CopilotChatToggle<CR>";
-      key = "<leader>ac";
+      key = "<leader>ap";
       options.desc = "Toggle Coilot chat";
       mode = "n";
     }

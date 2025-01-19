@@ -1,6 +1,7 @@
 {
   imports = [
     ./ai/avante.nix
+    ./ai/codecompanion.nix
     ./ai/copilot.nix
 
     ./completion/cmp.nix
