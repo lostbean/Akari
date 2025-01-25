@@ -90,5 +90,11 @@
         desc = "Open lazygit";
       };
     }
+    {
+      mode = "n";
+      key = "<leader>bd";
+      action = "<cmd>lua Snacks.bufdelete()<CR>";
+      options.desc = "Delete buffer";
+    }
   ];
 }

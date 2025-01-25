@@ -13,6 +13,12 @@
     # Windows
     {
       mode = "n";
+      key = "<leader>bD";
+      action = "<cmd>:bd<cr>";
+      options.desc = "Delete Buffer and Window";
+    }
+    {
+      mode = "n";
       key = "<C-Up>";
       action = "<C-w>k";
       options.desc = "Move To Window Up";
