@@ -104,6 +104,14 @@ To test your configuration simply run the following command
 nix run .
 ```
 
+#   Debugging
+
+If you ever need to inspect the generated `init.lua`, you can find it using this:
+
+```bash
+nix-store --query --requisites $(nix build /code/edgar/Akari/# --no-link --print-out-paths) | grep init.lua
+```
+
 # :bookmark_tabs: Resources
 Some sick ass Nixvim setups that I use from.
 
