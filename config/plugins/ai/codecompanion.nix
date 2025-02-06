@@ -5,6 +5,28 @@
     settings = {
       adapters = {
         anthropic = "anthropic";
+        openai.__raw = ''
+          function()
+            return require("codecompanion.adapters").extend("openai", {
+              schema = {
+                model = {
+                  default = "o1-mini"
+                }
+              }
+            })
+          end
+        '';
+        gemini.__raw = ''
+          function()
+            return require("codecompanion.adapters").extend("gemini", {
+              schema = {
+                model = {
+                  default = "gemini-2.0-flash-exp"
+                }
+              }
+            })
+          end
+        '';
       };
 
       strategies = {
