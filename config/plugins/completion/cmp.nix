@@ -39,6 +39,12 @@
       };
 
       settings = {
+        performance = {
+          # Limit the input length to prevent crashes
+          max_view_entries = 100;
+          throttle = 50;
+          debounce = 150;
+        };
         # Preselect first entry
         completion.completeopt = "menu,menuone,noinsert";
         sources = [
@@ -79,10 +85,6 @@
           }
           {
             name = "git";
-            priority = 20;
-          }
-          {
-            name = "npm";
             priority = 20;
           }
           {
