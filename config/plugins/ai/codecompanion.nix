@@ -35,6 +35,31 @@
         agent.adapter = "anthropic";
       };
 
+      strategies.chat = {
+        variables = {
+          # Pending fix be available in nixpkgs: https://github.com/Aider-AI/aider/issues/527
+          "git diff" = {
+            callback.__raw = ''
+              function()
+                return string.format(
+                  [[
+                  ```diff
+                  %s
+                  ```
+                  ]],
+                  vim.fn.system("git diff $(git merge-base --fork-point main)")
+                )
+              end
+            '';
+            description = "Share the current git diff with the LLM";
+            opts = {
+              contains_code = true;
+              hide_reference = true;
+            };
+          };
+        };
+      };
+
       prompt_library = {
         "Describe PR" = {
           strategy = "chat";
