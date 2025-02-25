@@ -4,7 +4,17 @@
 
     settings = {
       adapters = {
-        anthropic = "anthropic";
+        anthropic.__raw = ''
+          function()
+            return require("codecompanion.adapters").extend("anthropic", {
+              schema = {
+                model = {
+                  default = "claude-3-7-sonnet-20250219"
+                }
+              }
+            })
+          end
+        '';
         openai.__raw = ''
           function()
             return require("codecompanion.adapters").extend("openai", {
