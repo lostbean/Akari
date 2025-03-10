@@ -2,19 +2,14 @@
   description = "A nixvim configuration";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.nixpkgs.follows = "nixpkgs";
 
-    # color tools
-    minty = {
-      url = "github:NvChad/minty";
-      flake = false;
-    };
-
-    volt = {
-      url = "github:NvChad/volt";
-      flake = false;
-    };
   };
 
   outputs =
