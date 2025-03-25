@@ -52,14 +52,15 @@
             name = "nvim_lsp";
             priority = 100;
           }
-          {
-            name = "nvim_lsp_signature_help";
-            priority = 100;
-          }
-          {
-            name = "nvim_lsp_document_symbol";
-            priority = 100;
-          }
+          # Disabling these two lsp cmp function because at least one was causing the nvim to crash due long pattern regex string
+          # {
+          #   name = "nvim_lsp_signature_help";
+          #   priority = 100;
+          # }
+          # {
+          #   name = "nvim_lsp_document_symbol";
+          #   priority = 100;
+          # }
           {
             name = "treesitter";
             priority = 80;
