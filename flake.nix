@@ -8,8 +8,6 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
   outputs =
