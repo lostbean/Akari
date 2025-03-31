@@ -1,3 +1,7 @@
+{ pkgs, ... }:
+let
+  fetch-clean-md = pkgs.callPackage ./tools/get_clean_mardown.nix { };
+in
 {
   plugins.codecompanion = {
     enable = true;
@@ -65,6 +69,50 @@
             opts = {
               contains_code = true;
               hide_reference = true;
+            };
+          };
+        };
+        slash_commands = {
+          "fetch-as-md" = {
+            description = "List git files";
+            callback.__raw = ''
+              function(chat)
+                vim.ui.input(
+                  {prompt='Enter a URL: '},
+                  function(url)
+                    local id = "<url>" .. url .. "</url>"
+                    local doc = vim.fn.system("${fetch-clean-md}/bin/fetch-clean-md " .. url)
+
+                    if vim.v.shell_error ~= 0 then
+                       vim.notify("Error executing fetch-clean-md: " .. doc, vim.log.levels.ERROR, { title = "CodeCompanion" })
+                       return ""
+                    end
+
+                    local config = require("codecompanion.config")
+
+                    local content = string.format([[%s
+
+              <content>
+              %s
+              </content>]], "Here is the output from " .. url .. " that I'm sharing with you:", doc)
+
+                    chat:add_message({
+                      role = config.constants.USER_ROLE,
+                      content = content,
+                    }, { reference = id, visible = false })
+
+                    chat.references:add({
+                      source = "slash_command",
+                      name = "fetch-as-md",
+                      id = id,
+                    })
+
+                    return vim.notify("Added " .. url .. " to the chat", vim.log.levels.INFO, { title = "CodeCompanion" })
+                  end)
+              end
+            '';
+            opts = {
+              contains_code = false;
             };
           };
         };
