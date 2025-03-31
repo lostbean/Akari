@@ -13,7 +13,7 @@
     {
       mode = "n";
       key = "<leader>xx";
-      action = "<cmd>Trouble diagnostics toggle<cr>";
+      action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
       options = {
         silent = true;
         desc = "Document Diagnostics (Trouble)";
@@ -22,7 +22,7 @@
     {
       mode = "n";
       key = "<leader>xX";
-      action = "<cmd>Trouble workspace_diagnostics toggle <cr>";
+      action = "<cmd>Trouble diagnostics toggle<cr>";
       options = {
         silent = true;
         desc = "Workspace Diagnostics (Trouble)";
