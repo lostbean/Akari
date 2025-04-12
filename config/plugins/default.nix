@@ -31,6 +31,7 @@
     ./lang/cpp.nix
     ./lang/css.nix
     ./lang/docker.nix
+    ./lang/elixir.nix
     ./lang/html.nix
     ./lang/json.nix
     ./lang/lua.nix
