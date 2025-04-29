@@ -10,6 +10,13 @@
         ];
       };
     };
+
+    conform-nvim.settings = {
+      formatters_by_ft = {
+        elixir = [ "mix" ];
+      };
+    };
+
   };
 
   extraConfigLua = ''
