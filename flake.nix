@@ -8,6 +8,10 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
+
+    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
+    mcphub.url = "github:ravitemer/mcp-hub";
+
   };
 
   outputs =
@@ -16,15 +20,25 @@
       nixvim,
       flake-utils,
       nixpkgs,
+      mcphub-nvim,
+      mcphub,
       ...
     }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
+        mcphub-nvim-overlay = final: prev: {
+          mcphub = mcphub.packages.${prev.stdenv.hostPlatform.system}.default;
+          mcphub-nvim = mcphub-nvim.packages.${prev.stdenv.hostPlatform.system}.default;
+        };
+
         nixvimLib = nixvim.lib.${system};
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            mcphub-nvim-overlay
+          ];
         };
 
         nixvim' = nixvim.legacyPackages.${system};

@@ -3,6 +3,7 @@
     ./ai/avante.nix
     ./ai/codecompanion.nix
     ./ai/copilot.nix
+    ./ai/mcphub.nix
 
     ./completion/cmp.nix
     ./completion/lspkind.nix
