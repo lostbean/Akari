@@ -35,7 +35,7 @@ in
             return require("codecompanion.adapters").extend("gemini", {
               schema = {
                 model = {
-                  default = "gemini-2.0-flash-exp"
+                  default = "gemini-2.5-pro-exp-03-25"
                 }
               }
             })
@@ -44,9 +44,9 @@ in
       };
 
       strategies = {
-        chat.adapter = "anthropic";
-        inline.adapter = "anthropic";
-        agent.adapter = "anthropic";
+        chat.adapter = "gemini";
+        inline.adapter = "gemini";
+        agent.adapter = "gemini";
       };
 
       strategies.chat = {
