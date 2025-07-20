@@ -135,15 +135,6 @@
 
     {
       mode = "n";
-      key = "<C-x>";
-      action = "<cmd>:bp | bd #<cr>";
-      options = {
-        desc = "Delete buffer";
-      };
-    }
-
-    {
-      mode = "n";
       key = "<leader>br";
       action = "<cmd>BufferLineCloseRight<cr>";
       options = {
@@ -166,15 +157,6 @@
       action = "<cmd>BufferLineCloseLeft<cr>";
       options = {
         desc = "Delete buffers to the left";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>bo";
-      action = "<cmd>BufferLineCloseOthers<cr>";
-      options = {
-        desc = "Delete other buffers";
       };
     }
 

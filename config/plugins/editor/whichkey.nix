@@ -1,6 +1,7 @@
 {
   plugins.which-key = {
     enable = true;
+
     settings = {
       delay = 600;
 
@@ -26,12 +27,13 @@
             "n"
             "v"
           ];
-          group = "+code";
+          group = "Code";
         }
+
         {
           __unkeyed-1 = "<leader>f";
           mode = "n";
-          group = "+find/file";
+          group = "Find";
         }
 
         {
@@ -40,31 +42,37 @@
             "n"
             "v"
           ];
-          group = "+git";
+          group = "Git";
         }
 
         {
           __unkeyed-1 = "<leader>q";
           mode = "n";
-          group = "+quit/session";
+          group = "Quit/Session";
         }
 
         {
           __unkeyed-1 = "<leader>s";
           mode = "n";
-          group = "+search";
+          group = "Search";
         }
 
         {
           __unkeyed-1 = "<leader>u";
           mode = "n";
-          group = "+ui";
+          group = "UI/UX";
         }
 
         {
           __unkeyed-1 = "<leader>w";
           mode = "n";
-          group = "+windows";
+          group = "Windows";
+        }
+
+        {
+          __unkeyed-1 = "<leader>b";
+          mode = "n";
+          group = "Buffers";
         }
       ];
     };

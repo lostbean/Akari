@@ -3,10 +3,9 @@
   enableMan = false;
   # Import all your configuration modules here
   imports = [
-    ./autocmd.nix
+    # ./autocmd.nix
     ./keymaps.nix
     ./settings.nix
-    ./lazy.nix
     ./plugins
   ];
 

@@ -7,24 +7,30 @@
 
     ./completion/cmp.nix
     ./completion/lspkind.nix
+    ./completion/friendly-snippets.nix
 
     ./debug/dap.nix
 
+    ./editor/lz-n.nix
     ./editor/neotree.nix
     ./editor/spider.nix
     ./editor/undotree.nix
     ./editor/multicursor.nix
     ./editor/whichkey.nix
+    ./editor/yanky.nix
     ./editor/yazi.nix
 
     ./theme
     ./luasnip
     ./telescope
 
+    ./snacks
+
     ./git/gitsigns.nix
 
     ./lsp/conform.nix
-    ./lsp/fidget.nix
+    ./lsp/fastaction.nix
+    # ./lsp/fidget.nix
     ./lsp/lsp.nix
     ./lsp/lspsaga.nix
     ./lsp/trouble.nix
@@ -60,15 +66,17 @@
     ./ui/toggleterm.nix
     ./ui/ufo.nix
 
+    ./util/colorizer.nix
+    ./util/compiler.nix
     ./util/debugprint.nix
     ./util/kulala.nix
     ./util/mini.nix
-    ./util/nvim-colorizer.nix
+    # ./util/nvim-colorizer.nix
     ./util/nvim-autopairs.nix
     ./util/mini-surround.nix
     ./util/plenary.nix
     ./util/persistence.nix
     ./util/project-nvim.nix
-    ./util/snacks.nix
+    ./util/package-info.nix
   ];
 }

@@ -1,4 +1,9 @@
-{ pkgs, helpers, ... }:
+{
+  lib,
+  pkgs,
+  helpers,
+  ...
+}:
 {
   extraPackages = with pkgs; [
     marksman
@@ -24,6 +29,14 @@
       enable = true;
     };
 
+    conform-nvim.settings = {
+      formatters_by_ft.markdown = [ "deno_fmt" ];
+
+      formatters = {
+        deno_fmt.command = lib.getExe pkgs.deno;
+      };
+    };
+
     lsp.servers = {
       marksman.enable = true;
 
@@ -43,20 +56,10 @@
       };
     };
 
-    # TODO: Somehow setiing this linter breaks the init.lua with:
-    # E5113: Error while calling lua chunk: /nix/store/45qcp4lqkwlqmmc4ivpip1kir0bnfym4-init.lua:797: attempt to index a nil value
-    #
-    # lint = {
-    #   lintersByFt = {
-    #     md = [ "mdcli" ];
-    #   };
-    #
-    #   linters = {
-    #     mdcli = {
-    #       cmd = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
-    #     };
-    #   };
-    # };
+    lint = {
+      lintersByFt.markdown = [ "markdownlint" ];
+      linters.markdownlint.cmd = lib.getExe pkgs.markdownlint-cli;
+    };
   };
 
   keymaps = [

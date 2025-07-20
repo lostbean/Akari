@@ -48,7 +48,7 @@
           module = import ./config; # import the module directly
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs self;
           } // import ./lib { inherit pkgs; };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
