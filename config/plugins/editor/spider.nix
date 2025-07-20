@@ -1,7 +1,7 @@
 {
   plugins = {
     spider = {
-      extraOptions = {
+      settings = {
         subwordMovement = false;
       };
       enable = true;

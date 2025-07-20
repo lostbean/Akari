@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  extraPlugins = builtins.trace "${pkgs.mcphub-nvim}" [ pkgs.mcphub-nvim ];
+  extraPlugins = [ pkgs.mcphub-nvim ];
 
   extraConfigLua = ''
     require("mcphub").setup({
