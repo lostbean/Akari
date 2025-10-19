@@ -3,10 +3,17 @@
   plugins = {
 
     lsp = {
-      servers.elixirls = {
+      servers.expert = {
         enable = true;
-        cmd = [
-          "elixir-ls"
+        cmd = [ "expert" ];
+        # root-markers = [
+        #   "mix.exs"
+        #   ".git"
+        # ];
+        filetypes = [
+          "elixir"
+          "eelixir"
+          "heex"
         ];
       };
     };
@@ -18,31 +25,6 @@
     };
 
   };
-
-  extraConfigLua = ''
-    -- -- Elixir LSP
-    -- require("lspconfig").elixirls.setup({
-    --   cmd = { "elixir-ls" };
-    --   flags = {
-    --     debounce_text_changes = 150,
-    --   },
-    --   elixirLS = {
-    --     dialyzerEnabled = false,
-    --     fetchDeps = false,
-    --   };
-    -- })
-    -- require("lspconfig")["nextls"].setup({
-    --   cmd = {"nextls", "--stdio"},
-    --   init_options = {
-    --     extensions = {
-    --       credo = { enable = true }
-    --     },
-    --     experimental = {
-    --       completions = { enable = true }
-    --     }
-    --   }
-    -- })
-  '';
 
   keymaps = [
     {
