@@ -7,7 +7,7 @@ in
     enable = true;
 
     settings = {
-      adapters = {
+      adapters.http = {
         anthropic.__raw = ''
           function()
             return require("codecompanion.adapters").extend("anthropic", {

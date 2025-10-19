@@ -26,18 +26,6 @@
         };
       };
 
-      enabledServers = [
-        {
-          name = "emmet_language_server";
-          extraOptions = {
-            cmd = [
-              (lib.getExe pkgs.emmet-language-server)
-              "--stdio"
-            ];
-            filetypes = [ "html" ];
-          };
-        }
-      ];
     };
   };
 }
