@@ -11,7 +11,7 @@
 
       formatters = {
         prettierd.command = lib.getExe pkgs.prettierd;
-        prettier.command = lib.getExe pkgs.nodePackages.prettier;
+        prettier.command = lib.getExe pkgs.prettier;
       };
     };
 

@@ -1,4 +1,4 @@
-{ lib, helpers, ... }:
+{ lib, ... }:
 {
   plugins = {
     # cmp-nvim-lsp.enable = true;
@@ -102,7 +102,7 @@
           }
 
           # Disable this if running tests with nix flake check
-          (lib.mkIf helpers.enableExceptInTests { name = "nixpkgs_maintainers"; })
+          (lib.mkIf lib.nixvim.enableExceptInTests { name = "nixpkgs_maintainers"; })
         ];
 
         window = {

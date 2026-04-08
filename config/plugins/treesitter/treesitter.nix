@@ -3,7 +3,7 @@
   plugins = {
     treesitter = {
       enable = true;
-      folding = true;
+      folding.enable = true;
 
       settings = {
         highlight = {
@@ -33,16 +33,9 @@
       };
     };
 
-    treesitter-refactor = {
-      inherit (config.plugins.treesitter) enable;
-
-      highlightDefinitions = {
-        enable = true;
-        clearOnCursorMove = true;
-      };
-      smartRename.enable = true;
-      navigation.enable = true;
-    };
+    # treesitter-refactor has been archived upstream and conflicts with the
+    # new nvim-treesitter. Its features (highlight definitions, smart rename,
+    # navigation) are covered by LSP.
   };
 
   keymaps = lib.mkIf config.plugins.treesitter-context.enable [
