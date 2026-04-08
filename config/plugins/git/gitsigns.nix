@@ -1,13 +1,44 @@
 {
-  plugins.gitsigns = {
-    enable = true;
-    settings = {
-      trouble = true;
-      current_line_blame = false;
+  plugins = {
+    gitsigns = {
+      enable = true;
+
+      lazyLoad.settings.event = "DeferredUIEnter";
+
+      settings = {
+        trouble = true;
+        current_line_blame = false;
+      };
     };
+
+    which-key.settings.spec = [
+      {
+        __unkeyed-1 = "<leader>gd";
+        group = "Diff";
+        icon = " ";
+      }
+    ];
   };
 
   keymaps = [
+    {
+      mode = "n";
+      key = "]h";
+      action = ":Gitsigns next_hunk<CR>";
+      options = {
+        silent = true;
+        desc = "Next hunk";
+      };
+    }
+    {
+      mode = "n";
+      key = "[h";
+      action = ":Gitsigns prev_hunk<CR>";
+      options = {
+        silent = true;
+        desc = "Previous hunk";
+      };
+    }
     {
       mode = [
         "n"
@@ -82,11 +113,31 @@
     }
     {
       mode = "n";
-      key = "<leader>ghS";
-      action = ":Gitsigns stage_buffer<CR>";
+      key = "<leader>gS";
+      action.__raw = ''
+        function()
+          require('gitsigns').stage_buffer()
+          local file = vim.fn.expand('%')
+          vim.notify('Staged ' .. file, vim.log.levels.INFO, { title = 'Gitsigns' })
+        end
+      '';
       options = {
-        silent = true;
         desc = "Stage Buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gU";
+      action.__raw = ''
+        function()
+          local file = vim.fn.expand('%')
+          vim.fn.system('git restore --staged ' .. file)
+          require('gitsigns').refresh()
+          vim.notify('Unstaged ' .. file, vim.log.levels.INFO, { title = 'Gitsigns' })
+        end
+      '';
+      options = {
+        desc = "Unstage Buffer";
       };
     }
     {
@@ -98,45 +149,22 @@
         desc = "Undo Stage Hunk";
       };
     }
-
-    # Navigation
+    # Toggles
     {
       mode = "n";
-      key = "]h";
-      action = ":lua NextHunk()<cr>";
+      key = "<leader>ugb";
+      action = "<cmd>Gitsigns toggle_current_line_blame<CR>";
       options = {
-        silent = true;
-        desc = "Next hunk";
+        desc = "Toggle Blame";
       };
     }
-
     {
       mode = "n";
-      key = "[h";
-      action = ":lua PrevHunk()<cr>";
+      key = "<leader>ugw";
+      action = "<cmd>Gitsigns toggle_word_diff<CR>";
       options = {
-        silent = true;
-        desc = "Prev hunk";
+        desc = "Toggle Word Diff";
       };
     }
-
   ];
-
-  extraConfigLua = ''
-    function NextHunk()
-      if vim.wo.diff then
-        vim.cmd.normal({ "]h", bang = true })
-      else
-        package.loaded.gitsigns.nav_hunk("next", { target = "all", preview = true })
-      end
-    end
-
-    function PrevHunk()
-      if vim.wo.diff then
-        vim.cmd.normal({ "[h", bang = true })
-      else
-        package.loaded.gitsigns.nav_hunk("prev", { target = "all", preview = true })
-      end
-    end
-  '';
 }

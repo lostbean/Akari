@@ -3,10 +3,11 @@
   plugins.neo-tree = {
     enable = true;
 
-    settings = {
-      close_if_last_window = true;
+    lazyLoad.settings.cmd = [ "Neotree" ];
 
-      auto_clean_after_session_restore = true;
+    settings = {
+      closeIfLastWindow = true;
+      autoCleanAfterSessionRestore = true;
 
       sources = [
         "filesystem"
@@ -14,8 +15,7 @@
         "git_status"
         "document_symbols"
       ];
-
-      popup_border_style = "rounded"; # "NC", "double", "none", "rounded", "shadow", "single", "solid" or raw lua code
+      popupBorderStyle = "rounded";
 
       window.mappings = {
         "<space>" = "none";
@@ -26,7 +26,6 @@
       };
 
       eventHandlers = {
-        # Close neotree after opening a file
         "file_open_requested" = ''
           function()
             require("neo-tree.command").execute({ action = "close" })
@@ -35,25 +34,23 @@
       };
 
       filesystem = {
-        bind_to_cwd = false;
-        use_libuv_file_watcher = true;
-        follow_current_file.enabled = true;
+        bindToCwd = false;
+        useLibuvFileWatcher = true;
+        followCurrentFile.enabled = true;
 
-        filtered_items = {
-          hide_dotfiles = false;
-          hide_hidden = false;
-
-          never_show_by_pattern = [
+        filteredItems = {
+          hideDotfiles = false;
+          hideHidden = false;
+          neverShowByPattern = [
             ".direnv"
             ".git"
           ];
-
           visible = true;
         };
       };
 
-      default_component_configs = {
-        git_status = {
+      defaultComponentConfigs = {
+        gitStatus = {
           symbols = {
             added = icons.git.LineAdded;
             conflict = icons.git.FileConflict;
@@ -71,8 +68,6 @@
       commands = {
         copy_path.__raw = ''
           function(state)
-            -- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
-            -- The node is based on [NuiNode](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree#nuitreenode)
             local node = state.tree:get_node()
             local filepath = node:get_id()
             local filename = node.name
@@ -104,20 +99,18 @@
         '';
       };
     };
-
   };
 
   keymaps = [
     {
       mode = "n";
-      key = "<leader>e";
+      key = "<leader>E";
       action = "<cmd>Neotree action=focus reveal toggle<cr>";
       options = {
         silent = true;
         desc = "Explorer NeoTree (root dir)";
       };
     }
-
     {
       mode = "n";
       key = "<leader>ge";
@@ -127,7 +120,6 @@
         desc = "Explorer NeoTree (git modified)";
       };
     }
-
     {
       mode = "n";
       key = "<leader>be";

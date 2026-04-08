@@ -4,13 +4,15 @@
 
 Akari
 
-  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
-  <div align="center">
+<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" />
+<br>
 
-  <div align="center">
+<div align="center">
+
+<div align="center">
    <p></p>
    <a href="https://github.com/sioodmy/dotfiles/">
-      <img src="https://img.shields.io/github/repo-size/lostbean/Akari?color=ea999c&labelColor=303446&style=for-the-badge">
+      <img src="https://img.shields.io/github/repo-size/spector700/Akari?color=ea999c&labelColor=303446&style=for-the-badge">
    </a>
       <a = href="https://nixos.org">
       <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=303446&logo=NixOS&logoColor=white&color=91D7E3">
@@ -25,8 +27,10 @@ Akari
 <br>
 </div>
 
+![neovim-pic-1](./.github/assets/neovim-pic-1.png)
 ![neovim-pic-2](./.github/assets/neovim-pic-2.png)
 ![neovim-pic-3](./.github/assets/neovim-pic-3.png)
+
 <p align="center"> Screenshots Circa: 2024-4-9</p>
 
 ---
@@ -34,14 +38,12 @@ Akari
 # 🔨 Installation
 
 If you'd like to give it a try before installing:
-
-```sh
-nix run github:lostbean/Akari
-```
+`nix run github:spector700/Akari`
 
 ### Adding it as a flake
 
-1: Go to the flake.nix and add `Akari.url = "github:lostbean/Akari"` to your inputs.
+1: Go to the flake.nix and add `Akari.url = "github:spector700/Akari"` to your
+inputs.
 
 ```nix
 # flake
@@ -49,13 +51,15 @@ nix run github:lostbean/Akari
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    Akari.url = "github:lostbean/Akari";
+    Akari.url = "github:spector700/Akari";
   };
 }
 ```
+
 2: Run nix flake update
 
-3: Install it by adding `inputs.Akari.packages.${system}.default` to your environment.systemPackages or home.packages. If you're using home-manager.
+3: Install it by adding `inputs.Akari.packages.${system}.default` to your
+environment.systemPackages or home.packages. If you're using home-manager.
 
 ```nix
 # packages
@@ -67,33 +71,14 @@ nix run github:lostbean/Akari
 }
 ```
 
-Or using the provided overlay.
-
-```nix
-{
-  nixpkgs.overlays = [
-      inputs.Akari.overlays.default;
-  ];
-}
-
-# and adding the akira package to to the system.
-
-{ pkgs, ... }:
-{
-  home.packages = with pkgs; [
-   akari
-  ];
-}
-```
-
 4: Rebuild your system.
 
 </details>
 
 # ⚙️ Configuration
 
-To start configuring, add or modify the nix files in `./config`.
-If you add a new configuration file, remember to add it to the
+To start configuring, add or modify the nix files in `./config`. If you add a
+new configuration file, remember to add it to the
 [`config/default.nix`](./config/default.nix) file
 
 ## Testing your new configuration
@@ -104,17 +89,9 @@ To test your configuration simply run the following command
 nix run .
 ```
 
-#   Debugging
-
-If you ever need to inspect the generated `init.lua`, you can find it using this:
-
-```bash
-nix-store --query --requisites $(nix build /code/edgar/Akari/# --no-link --print-out-paths) | grep init.lua
-```
-
 # :bookmark_tabs: Resources
+
 Some sick ass Nixvim setups that I use from.
 
-- [spector700/Akari - original work](https://github.com/spector700/Akari)
 - [khaneliman/khanelivim](https://github.com/khaneliman/khanelivim/tree/main)
 - [niksingh710/nvix](https://github.com/niksingh710/nvix)

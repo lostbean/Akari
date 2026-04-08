@@ -4,52 +4,53 @@
   lib,
   ...
 }:
+let
+  inherit (lib) getExe;
+in
 {
-  plugins = {
-    nix.enable = true;
-    hmts.enable = true;
-    nix-develop.enable = true;
+  lsp.servers = {
+    statix.enable = true;
 
-    conform-nvim.settings = {
-      formatters_by_ft = {
-        nix = [ "nixfmt" ];
-      };
-
-      formatters = {
-        nixfmt.command = lib.getExe pkgs.nixfmt;
-      };
-    };
-
-    lint = {
-      lintersByFt = {
-        nix = [ "statix" ];
-      };
-
-      linters = {
-        statix.cmd = lib.getExe pkgs.statix;
-      };
-    };
-
-    lsp.servers.nixd = {
+    nixd = {
       enable = true;
-      settings =
+
+      config.settings.nixd =
         let
           flake = ''(builtins.getFlake "${self}")'';
           system = ''''${builtins.currentSystem}'';
         in
         {
           formatting = {
-            command = [ "${lib.getExe pkgs.nixfmt}" ];
+            command = [ "${getExe pkgs.nixfmt}" ];
           };
           nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
           options = {
             nixvim.expr = ''${flake}.packages.${system}.nvim.options'';
-            # NOTE: These will be passed in from outside using `.extend` from the flake installing this package
-            # nix-darwin.expr = ''${flake}.darwinConfigurations.khanelimac.options'';
-            # nixos.expr = ''${flake}.nixosConfigurations.khanelinix.options'';
-            # home-manager.expr = ''${nixos.expr}.home-manager.users.type.getSubOptions [ ]'';
           };
         };
+    };
+  };
+
+  plugins = {
+    nix.enable = true;
+    # hmts.enable = true;
+    direnv.enable = pkgs.stdenv.hostPlatform.isLinux;
+    nix-develop.enable = true;
+
+    conform-nvim.settings = {
+      formatters_by_ft = {
+        nix = [ "nixfmt" ];
+      };
+    };
+
+    lint = {
+      lintersByFt = {
+        nix = [ "deadnix" ];
+      };
+
+      linters = {
+        deadnix.cmd = getExe pkgs.deadnix;
+      };
     };
   };
 }

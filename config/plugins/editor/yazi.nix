@@ -1,15 +1,21 @@
 {
-  plugins.yazi.enable = true;
+  plugins.yazi = {
+    enable = true;
+
+    lazyLoad = {
+      settings = {
+        cmd = [
+          "Yazi"
+        ];
+      };
+    };
+  };
 
   keymaps = [
     {
       mode = "n";
-      key = "<leader>E";
-      action.__raw = ''
-        function()
-          require('yazi').yazi()
-        end
-      '';
+      key = "<leader>e";
+      action = "<cmd>Yazi<cr>";
       options = {
         desc = "Yazi toggle";
         silent = true;

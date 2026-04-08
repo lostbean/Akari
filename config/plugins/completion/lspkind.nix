@@ -1,68 +1,70 @@
 {
   plugins.lspkind = {
-    enable = true;
-
+    enable = false;
     settings = {
-      cmp.menu = {
-        nvim_lsp = "";
-        nvim_lua = "";
-        neorg = "[neorg]";
-        buffer = "";
-        calc = "";
-        git = "";
-        luasnip = "󰩫";
-        codeium = "󱜙";
-        copilot = "";
-        emoji = "󰞅";
-        path = "";
-        spell = "";
-      };
 
-      symbol_map = {
+      # cmp.menu = {
+      #   nvim_lsp = "";
+      #   nvim_lua = "";
+      #   neorg = "[neorg]";
+      #   buffer = "";
+      #   calc = "";
+      #   git = "";
+      #   luasnip = "󰩫";
+      #   codeium = "󱜙";
+      #   copilot = "";
+      #   emoji = "󰞅";
+      #   path = "";
+      #   spell = "";
+      # };
+
+      symbolMap = {
         Namespace = "󰌗";
         Text = "󰊄";
         Method = "󰆧";
         Function = "󰡱";
-        Constructor = "";
+        Constructor = "";
         Field = "󰜢";
         Variable = "󰀫";
         Class = "󰠱";
-        Interface = "";
+        Interface = "";
         Module = "󰕳";
-        Property = "";
+        Property = "";
         Unit = "󰑭";
         Value = "󰎠";
-        Enum = "";
+        Enum = "";
         Keyword = "󰌋";
-        Snippet = "";
+        Snippet = "";
         Color = "󰏘";
         File = "󰈚";
         Reference = "󰈇";
         Folder = "󰉋";
-        EnumMember = "";
+        EnumMember = "";
         Constant = "󰏿";
         Struct = "󰙅";
-        Event = "";
+        Event = "";
         Operator = "󰆕";
-        TypeParameter = "";
-        Table = "";
+        TypeParameter = "";
+        Table = "";
         Object = "󰅩";
-        Tag = "";
+        Tag = "";
         Array = "[]";
-        Boolean = "";
-        Number = "";
+        Boolean = "";
+        Number = "";
         Null = "󰟢";
         String = "󰉿";
-        Calendar = "";
+        Calendar = "";
         Watch = "󰥔";
-        Package = "";
-        Copilot = "";
-        Codeium = "";
-        TabNine = "";
+        Package = "";
+        Copilot = "";
+        Codeium = "";
+        TabNine = "";
       };
 
-      maxwidth = 50;
-      ellipsis_char = "...";
+      extraOptions = {
+        maxwidth = 50;
+        ellipsis_char = "...";
+      };
     };
   };
 }

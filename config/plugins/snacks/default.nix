@@ -6,11 +6,19 @@
 }:
 {
   imports = [
-    ./bigfile.nix
     ./bufdelete.nix
+    ./dim.nix
     ./gitbrowse.nix
+    ./image.nix
+    ./picker.nix
+    ./profiler.nix
     ./lazygit.nix
+    ./rename.nix
+    ./scratch.nix
+    ./toggle.nix
+    ./words.nix
   ];
+
   extraConfigLuaPre = lib.mkOrder 1 (
     lib.optionalString
       (config.plugins.snacks.enable && config.plugins.snacks.settings.profiler.enabled) # Lua
@@ -32,9 +40,10 @@
   plugins = {
     snacks = {
       enable = true;
+
       settings = {
-        profiler.enabled = true;
         indent.enabled = true;
+        input.enabled = true;
         scroll.enabled = true;
       };
     };

@@ -4,54 +4,33 @@
   ...
 }:
 {
-  extraPackages = with pkgs; [
-    marksman
-  ];
+  lsp.servers = {
+    marksman.enable = true;
 
-  plugins = {
-    clipboard-image = {
+    ltex = {
       enable = true;
-    };
 
-    image = {
-      enable = lib.nixvim.enableExceptInTests;
-      settings = {
-        integrations.markdown = {
-          clearInInsertMode = true;
-          onlyRenderImageAtCursor = true;
+      config = {
+        filetypes = [
+          "markdown"
+          "text"
+        ];
+        settings = {
+          completionEnabled = true;
+          checkFrequency = "save";
+          language = "en-GB";
         };
       };
     };
+  };
 
+  plugins = {
     markdown-preview = {
       enable = true;
     };
 
     conform-nvim.settings = {
       formatters_by_ft.markdown = [ "deno_fmt" ];
-
-      formatters = {
-        deno_fmt.command = lib.getExe pkgs.deno;
-      };
-    };
-
-    lsp.servers = {
-      marksman.enable = true;
-
-      ltex = {
-        enable = true;
-        filetypes = [
-          "markdown"
-          "text"
-        ];
-
-        settings.completionEnabled = true;
-
-        extraOptions = {
-          checkFrequency = "save";
-          language = "en-GB";
-        };
-      };
     };
 
     lint = {

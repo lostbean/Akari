@@ -1,30 +1,51 @@
 { config, lib, ... }:
 {
+  # Home manager injections
+  extraFiles = lib.mkIf config.plugins.treesitter.nixvimInjections {
+    "after/queries/nix/injections.scm".source = ./injections-hm.scm;
+  };
+
   plugins = {
     treesitter = {
       enable = true;
-      folding.enable = true;
+      # folding.enable = true;
 
-      settings = {
-        highlight = {
-          additional_vim_regex_highlighting = true;
-          enable = true;
-          disable = # Lua
-            ''
-              function(lang, bufnr)
-                return vim.api.nvim_buf_line_count(bufnr) > 10000
-              end
-            '';
-        };
+      grammarPackages =
+        let
+          # Large grammars that are not used
+          excludedGrammars = [
+            "agda-grammar"
+            "cuda-grammar"
+            "d-grammar"
+            "fortran-grammar"
+            "gnuplot-grammar"
+            "haskell-grammar"
+            "hlsl-grammar"
+            "julia-grammar"
+            "koto-grammar"
+            "lean-grammar"
+            "nim-grammar"
+            "scala-grammar"
+            "slang-grammar"
+            "systemverilog-grammar"
+            "tlaplus-grammar"
+            "verilog-grammar"
+          ];
+        in
+        lib.filter (g: !(lib.elem g.pname excludedGrammars)) config.plugins.treesitter.package.allGrammars;
 
-        incremental_selection.enable = true;
-        indent.enable = true;
-      };
       nixvimInjections = true;
+      highlight.enable = true;
+      indent.enable = true;
     };
 
     treesitter-context = {
       inherit (config.plugins.treesitter) enable;
+      lazyLoad.settings.event = [
+        "BufReadPost"
+        "BufNewFile"
+      ];
+
       settings = {
         max_lines = 4;
         min_window_height = 40;
@@ -32,17 +53,13 @@
         separator = "-";
       };
     };
-
-    # treesitter-refactor has been archived upstream and conflicts with the
-    # new nvim-treesitter. Its features (highlight definitions, smart rename,
-    # navigation) are covered by LSP.
   };
 
   keymaps = lib.mkIf config.plugins.treesitter-context.enable [
     {
       mode = "n";
-      key = "<leader>uT";
-      action = "<cmd>TSContextToggle<cr>";
+      key = "<leader>ut";
+      action = "<cmd>TSContext toggle<cr>";
       options.desc = "Treesitter Context toggle";
     }
   ];

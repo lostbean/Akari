@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nix run:*)",
+      "Bash(nix eval:*)",
+      "Bash(nix search:*)"
+    ]
+  }
+}

@@ -1,8 +1,0 @@
-{ mkPkgs, inputs, ... }:
-{
-  extraPlugins = [
-  ];
-
-  keymaps = [
-  ];
-}

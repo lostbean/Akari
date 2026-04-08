@@ -6,24 +6,18 @@
         beacon.enable = true;
         ui.border = "rounded"; # One of none, single, double, rounded, solid, shadow
         hover = {
-          open_cmd = "!firfox";
-          open_link = "gx";
+          openCmd = "!firfox";
+          openLink = "gx";
         };
-        symbol_in_winbar = {
+        symbolInWinbar = {
           enable = true; # Breadcrumbs
-          show_file = false;
+          showFile = false;
         };
 
-        finder = {
-          methods = {
-            "tyd" = "textDocument/typeDefinition";
-          };
-        };
-
-        code_action = {
-          show_server_name = true;
-          num_shortcut = false;
-          only_in_cursor = false;
+        codeAction = {
+          showServerName = true;
+          numShortcut = false;
+          onlyInCursor = false;
           keys = {
             exec = "<CR>";
             quit = [
@@ -48,19 +42,19 @@
         };
 
         outline = {
-          close_after_jump = true;
+          closeAfterJump = true;
           layout = "normal"; # normal or float
-          win_position = "right"; # left or right
+          winPosition = "right"; # left or right
           keys = {
             jump = "e";
             quit = "q";
-            toggle_or_jump = "o";
+            toggleOrJump = "o";
           };
         };
 
-        scroll_preview = {
-          scroll_up = "<C-d>";
-          scroll_down = "<C-u>";
+        scrollPreview = {
+          scrollUp = "<C-d>";
+          scrollDown = "<C-u>";
         };
       };
     };
@@ -92,7 +86,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "<leader>lo";
@@ -102,7 +95,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "<leader>lr";
@@ -112,7 +104,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "<leader>ca";
@@ -122,27 +113,15 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
-      key = "<leader>cb";
+      key = "<leader>cd";
       action = "<cmd>Lspsaga show_buf_diagnostics<CR>";
       options = {
-        desc = "Buffer Diagnostics";
+        desc = "Line Diagnostics";
         silent = true;
       };
     }
-
-    {
-      mode = "n";
-      key = "<leader>cw";
-      action = "<cmd>Lspsaga show_workspace_diagnostics<CR>";
-      options = {
-        desc = "Workspace Diagnostics";
-        silent = true;
-      };
-    }
-
     {
       mode = "n";
       key = "gd";
@@ -152,7 +131,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "gt";
@@ -162,17 +140,6 @@
         silent = true;
       };
     }
-
-    {
-      mode = "n";
-      key = "gr";
-      action = "<cmd>Lspsaga finder<CR>";
-      options = {
-        desc = "References";
-        silent = true;
-      };
-    }
-
     {
       mode = "n";
       key = "gpd";
@@ -182,7 +149,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "gpt";
@@ -192,7 +158,6 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
       key = "gl";
@@ -202,79 +167,21 @@
         silent = true;
       };
     }
-
     {
       mode = "n";
-      key = "]d";
+      key = "[d";
       action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
       options = {
         desc = "Next Diagnostic";
         silent = true;
       };
     }
-
     {
       mode = "n";
-      key = "[d";
+      key = "]d";
       action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
       options = {
         desc = "Previous Diagnostic";
-        silent = true;
-      };
-    }
-
-    {
-      mode = "n";
-      key = "]e";
-      action.__raw = ''
-        function()
-          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-        end
-      '';
-      options = {
-        desc = "Next Error";
-        silent = true;
-      };
-    }
-
-    {
-      mode = "n";
-      key = "[e";
-      action.__raw = ''
-        function()
-          require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-        end
-      '';
-      options = {
-        desc = "Previous Error";
-        silent = true;
-      };
-    }
-
-    {
-      mode = "n";
-      key = "]w";
-      action.__raw = ''
-        function()
-          require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
-        end
-      '';
-      options = {
-        desc = "Next Warning";
-        silent = true;
-      };
-    }
-
-    {
-      mode = "n";
-      key = "[w";
-      action.__raw = ''
-        function()
-          require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
-        end
-      '';
-      options = {
-        desc = "Previous Warning";
         silent = true;
       };
     }

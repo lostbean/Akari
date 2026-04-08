@@ -1,7 +1,34 @@
 {
   plugins = {
-
     dap-virtual-text.enable = true;
+
+    dap = {
+      enable = true;
+      signs = {
+        dapBreakpoint = {
+          text = " ";
+          texthl = "DiagnosticInfo";
+        };
+        dapBreakpointCondition = {
+          text = " ";
+          texthl = "DiagnosticInfo";
+        };
+        dapBreakpointRejected = {
+          text = " ";
+          texthl = "DiagnosticError";
+        };
+        dapLogPoint = {
+          text = " ";
+          texthl = "DiagnosticInfo";
+        };
+        dapStopped = {
+          text = "󰁕 ";
+          texthl = "DiagnosticWarn";
+          linehl = "DapStoppedLine";
+          numhl = "DapStoppedLine";
+        };
+      };
+    };
 
     dap-ui = {
       enable = true;
@@ -47,34 +74,6 @@
       };
     };
 
-    dap = {
-      enable = true;
-      signs = {
-        dapBreakpoint = {
-          text = " ";
-          texthl = "DiagnosticInfo";
-        };
-        dapBreakpointCondition = {
-          text = " ";
-          texthl = "DiagnosticInfo";
-        };
-        dapBreakpointRejected = {
-          text = " ";
-          texthl = "DiagnosticError";
-        };
-        dapLogPoint = {
-          text = " ";
-          texthl = "DiagnosticInfo";
-        };
-        dapStopped = {
-          text = "󰁕 ";
-          texthl = "DiagnosticWarn";
-          linehl = "DapStoppedLine";
-          numhl = "DapStoppedLine";
-        };
-      };
-    };
-
     which-key.settings.spec = [
       {
         __unkeyed-1 = "<leader>d";
@@ -82,7 +81,7 @@
           "n"
           "v"
         ];
-        group = "+debug";
+        group = "Debug";
       }
     ];
   };

@@ -21,29 +21,32 @@
       };
       move = {
         enable = true;
-        goto_next_start = {
+        set_jumps = true;
+
+        gotoNextStart = {
           "]m" = "@function.outer";
           "]]" = "@class.outer";
         };
-        goto_next_end = {
+        gotoNextEnd = {
           "]M" = "@function.outer";
           "][" = "@class.outer";
         };
-        goto_previous_start = {
+        gotoPreviousStart = {
           "[m" = "@function.outer";
           "[[" = "@class.outer";
         };
-        goto_previous_end = {
+        gotoPreviousEnd = {
           "[M" = "@function.outer";
           "[]" = "@class.outer";
         };
       };
+
       swap = {
         enable = true;
-        swap_next = {
+        swapNext = {
           "<leader>a" = "@parameters.inner";
         };
-        swap_previous = {
+        swapPrevious = {
           "<leader>A" = "@parameter.outer";
         };
       };

@@ -1,44 +1,53 @@
 {
   imports = [
-    ./ai/avante.nix
+    # ./ai/avante.nix
     ./ai/codecompanion.nix
-    ./ai/copilot.nix
+    ./ai/copilot-lua.nix
+    ./ai/copilot-lsp.nix
     ./ai/mcphub.nix
+    ./ai/opencode.nix
+    ./ai/sidekick.nix
 
-    ./completion/cmp.nix
-    ./completion/lspkind.nix
+    ./completion/blink.nix
     ./completion/friendly-snippets.nix
+    # ./completion/lspkind.nix
 
     ./debug/dap.nix
 
     ./editor/lz-n.nix
     ./editor/neotree.nix
-    ./editor/spider.nix
-    ./editor/undotree.nix
+    ./editor/faster
     ./editor/multicursor.nix
+    ./editor/neogen.nix
+    ./editor/spider.nix
+    # ./editor/undotree.nix
     ./editor/whichkey.nix
     ./editor/yanky.nix
     ./editor/yazi.nix
 
     ./theme
     ./luasnip
-    ./telescope
+
+    ./mini
 
     ./snacks
+
+    # ./telescope
 
     ./git/gitsigns.nix
 
     ./lsp/conform.nix
     ./lsp/fastaction.nix
-    # ./lsp/fidget.nix
     ./lsp/lsp.nix
-    ./lsp/lspsaga.nix
+    # ./lsp/lspsaga.nix
+    ./lsp/otter.nix
     ./lsp/trouble.nix
 
     ./lang/cpp.nix
     ./lang/css.nix
     ./lang/docker.nix
     ./lang/elixir.nix
+    ./lang/gleam.nix
     ./lang/html.nix
     ./lang/json.nix
     ./lang/lua.nix
@@ -48,35 +57,40 @@
     ./lang/shell.nix
     ./lang/typescript.nix
     ./lang/yaml.nix
-    ./lang/gleam.nix
 
     ./treesitter/treesitter.nix
     ./treesitter/treesitter-textobjects.nix
+    ./treesitter/ts-comments.nix
 
     ./ui/alpha.nix
     ./ui/bufferline.nix
     ./ui/general.nix
     ./ui/flash.nix
-    ./ui/indent-blankline.nix
+    ./ui/lightbulb.nix
     ./ui/lualine.nix
     ./ui/noice.nix
     ./ui/notify.nix
     ./ui/nui.nix
     ./ui/precognition.nix
     ./ui/toggleterm.nix
-    ./ui/ufo.nix
+    # ./ui/ufo.nix
 
     ./util/colorizer.nix
     ./util/compiler.nix
     ./util/debugprint.nix
+    ./util/devdocs.nix
+    ./util/firenvim.nix
+    ./util/glance.nix
+    ./util/hardtime.nix
+    ./util/img-clip.nix
     ./util/kulala.nix
-    ./util/mini.nix
-    # ./util/nvim-colorizer.nix
     ./util/nvim-autopairs.nix
-    ./util/mini-surround.nix
+    ./util/nvim-surround.nix
+    ./util/overseer.nix
     ./util/plenary.nix
     ./util/persistence.nix
-    ./util/project-nvim.nix
     ./util/package-info.nix
+    ./util/refactoring.nix
+    ./util/todo-comments.nix
   ];
 }
