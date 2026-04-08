@@ -48,6 +48,7 @@
     ./lang/docker.nix
     ./lang/elixir.nix
     ./lang/gleam.nix
+    ./lang/haskell.nix
     ./lang/html.nix
     ./lang/json.nix
     ./lang/lua.nix

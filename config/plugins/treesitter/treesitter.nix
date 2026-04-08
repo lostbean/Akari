@@ -19,7 +19,7 @@
             "d-grammar"
             "fortran-grammar"
             "gnuplot-grammar"
-            "haskell-grammar"
+
             "hlsl-grammar"
             "julia-grammar"
             "koto-grammar"
