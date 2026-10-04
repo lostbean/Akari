@@ -9,8 +9,14 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
 
-    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
-    mcphub.url = "github:ravitemer/mcp-hub";
+    mcphub-nvim = {
+      url = "github:ravitemer/mcphub.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mcphub = {
+      url = "github:ravitemer/mcp-hub";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

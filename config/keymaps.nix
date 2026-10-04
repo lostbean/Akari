@@ -188,7 +188,9 @@
                   action.__raw = ''
                     function ()
                       vim.b.disable_diagnostics = not vim.b.disable_diagnostics
-                      if vim.b.disable_diagnostics then
+                      if vim.diagnostic.is_enabled then
+                        vim.diagnostic.enable(not vim.b.disable_diagnostics, { bufnr = 0 })
+                      elseif vim.b.disable_diagnostics then
                         vim.diagnostic.disable(0)
                       else
                         vim.diagnostic.enable(0)
@@ -204,7 +206,9 @@
                   action.__raw = ''
                     function ()
                       vim.g.disable_diagnostics = not vim.g.disable_diagnostics
-                      if vim.g.disable_diagnostics then
+                      if vim.diagnostic.is_enabled then
+                        vim.diagnostic.enable(not vim.g.disable_diagnostics)
+                      elseif vim.g.disable_diagnostics then
                         vim.diagnostic.disable()
                       else
                         vim.diagnostic.enable()
